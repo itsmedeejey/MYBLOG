@@ -1,6 +1,5 @@
-import {User} from "./models/mongodb.js";
 import jwt from 'jsonwebtoken';
-const SECRET_KEY = procces.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
 
 
  const userMiddleware = async(req,res,next)=>{
@@ -13,10 +12,9 @@ const SECRET_KEY = procces.env.SECRET_KEY;
       req.user = decodedValue;
       next();      
     }catch(error){
-      res.status(401).json({msg:"invalid token"})
+      res.status(401).json({msg:"invalid token",error})
     }
-
  }   
  
- export default userMiddleware;
+ export { userMiddleware}; 
     
