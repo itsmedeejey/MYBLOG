@@ -1,6 +1,6 @@
 import React ,{useState} from 'react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Loginpage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -8,7 +8,7 @@ export default function Loginpage() {
     const [password,setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('')
-
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
       e.preventDefault();
@@ -21,8 +21,9 @@ export default function Loginpage() {
         });
   
         localStorage.setItem('token', res.data.token);
-        console.log(res.data.token)
+        // console.log(res.data.token)
         setSuccess('Login successful!');
+        navigate("/home")
       } catch (err) {
         setError(err.response?.data?.message || 'Login failed');
       }
@@ -34,7 +35,7 @@ export default function Loginpage() {
       setSuccess('');
       try{
         const res = await axios.post("http://localhost:3000/user/signup",
-        {  email,password});
+        {  email,password}); 
      
      setSuccess('Signup successful! Please log in.');
       setIsLogin(true); // Switch to login mode
@@ -53,7 +54,7 @@ export default function Loginpage() {
   
           <form onSubmit={isLogin ? handleLogin : handleSignup}>
             <div className="flex flex-col w-80 text-2xl text-left gap-1">
-              <span>Email</span>
+              <span>Username</span>
               <input
                 className='px-2 bg-slate-300 rounded-lg placeholder:text-white'
                 value={email}
@@ -73,7 +74,7 @@ export default function Loginpage() {
   
             <button
               type="submit"
-              className='h-8 text-slate-100 px-10 mt-4 mb-6 rounded-xl bg-sky-500 hover:bg-sky-700'
+              className='h-10 w-40  text-slate-100 px-10 mt-4 mb-6 rounded-xl bg-sky-500 hover:bg-sky-700'
             >
               {isLogin ? 'Login' : 'Sign Up'}
             </button>

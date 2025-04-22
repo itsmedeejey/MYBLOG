@@ -4,6 +4,7 @@ import signupRouter from './routes/userSignUp.js'
 import signinRouter from './routes/usersignIn.js'
 import createPostRouter from './routes/createBlog.js'
 import showPostRouter from './routes/showPost.js'
+import showUserPostRouter from './routes/showUserPost.js'
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use('/user',signupRouter);
 app.use('/user',signinRouter);
 app.use('/user',createPostRouter);
 app.use('/user',showPostRouter);
+app.use('/user',showUserPostRouter);
 
 
 

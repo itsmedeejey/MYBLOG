@@ -9,10 +9,15 @@ router.post('/signin', async (req, res) => {
     const {email, password} = req.body;
     try {
       const existingUser = await User.findOne({ email });
+      
       if (existingUser) {
         const isPassword =  bcrypt.compare(password,existingUser.password)
         if(isPassword){
-            const token = jwt.sign(email,SECRET_KEY)
+            const token = jwt.sign({
+              id: existingUser._id,
+              user:existingUser.email
+              
+            },SECRET_KEY)
             res.status(201).json({ message: 'login  successfully!',token });
         }
         if(!isPassword){
