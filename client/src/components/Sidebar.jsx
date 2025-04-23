@@ -18,7 +18,7 @@ export default function Sidebar() {
         Your Posts
       </Link>
       <Link to="/signup" className="text-xl font-semibold hover:text-blue-600">
-        Logout
+        Login
       </Link>
     </div>
   );
