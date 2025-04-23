@@ -77,7 +77,7 @@ export default function NavBar() {
             </div>
           </Link>
 
-          {!isloggedIn && (
+          {isloggedIn && (
             <Link to={"/signup"} className="hover:bg-red-400 p-2 rounded-md ">
               Sign in
             </Link>
