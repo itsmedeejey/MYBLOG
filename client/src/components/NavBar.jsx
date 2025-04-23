@@ -5,13 +5,18 @@ import Sidebar from "./Sidebar"
 import { useState } from "react";
 export default function NavBar() {
   const [showSidebar, setShowSidebar] = useState(false);
-
-  const token = localStorage.getItem("token");
   let isloggedIn = false;
+  let user
+try{
+  const token = localStorage.getItem("token");
   if (token) {
     isloggedIn = true;
+    user = jwtDecode(token);
   }
-  const user = jwtDecode(token);
+
+}catch(err){
+
+}
 
   return (
     <>
@@ -77,19 +82,22 @@ export default function NavBar() {
             </div>
           </Link>
 
-          {isloggedIn && (
+          {!isloggedIn && (
             <Link to={"/signup"} className="hover:bg-red-400 p-2 rounded-md ">
               Sign in
             </Link>
           )}
 
+         {user &&(
+
           <Link to={"/yourposts"}>
             <div className="cursor-pointer rounded-full h-12 w-12 bg-slate-200 flex justify-center ">
               <div className="flex flex-col justify-center h-full font-smeibold uppercase">
-                {user.user[0]}
+              {user.user ? user.user[0] : "U"}
               </div>
             </div>
           </Link>
+         ) }
         </div>
 
         <div className="md:hidden block">

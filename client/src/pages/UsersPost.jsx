@@ -5,22 +5,15 @@ import { useEffect,useState } from "react"
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 const usersPost = () =>{
-    
+    const navigate = useNavigate()
+
     const baseURL = import.meta.env.VITE_API_BASE_URL;
 
         const token = localStorage.getItem("token");
         const user = jwtDecode(token)
         const [posts, setPosts] = useState([]);
-        const [logout, setlogout] = useState([]);
 
-        useEffect(()=>{
-            const navigate = useNavigate()
-
-            const islogout = ()=>{
-                localStorage.removeItem(token)
-                navigate("/")
-                }
-        },[logout])
+     
         useEffect(() => {
             const fetchPost = async()=>{
                 try {
@@ -42,9 +35,12 @@ const usersPost = () =>{
             }
                 
             fetchPost()
-        }, []);
+        }, [posts]);
 
-  
+        const handleLogout = () => {
+            localStorage.removeItem("token"); 
+            navigate("/");
+        };
         if (!posts) return <p>Loading...</p>;
 
     return(<div>
@@ -56,7 +52,7 @@ const usersPost = () =>{
         </div>
         <div className="flex flex-col justify-end items-end mr-16">
 
-        <button className="bg-red-600 p-1 px-2 rounded-xl"  onClick={setlogout}>  logout</button>
+        <button className="bg-red-600 p-1 px-2 rounded-xl"  onClick={handleLogout}>  logout</button>
         </div>
         
         <PostList posts={posts}></PostList>
