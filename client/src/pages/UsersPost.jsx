@@ -42,6 +42,7 @@ const usersPost = () =>{
         <h1 className="font-extralight text-[48px] uppercase font-serif">your posts,</h1>
         <h1 className="font-serif font-medium text-[36px] pt-3  "> @{user.user}</h1>
         </div>
+        
         <PostList posts={posts}></PostList>
 
 

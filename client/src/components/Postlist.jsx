@@ -9,7 +9,6 @@ const PostList = ({ posts = [] }) => {
   // sort(
   //   (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   // );
-
   return (
     <div className="max-w-xs md:max-w-3xl mx-auto overflow-x-hidden p-5 py-10 space-y-6">
       {sortedPosts.map(post => (

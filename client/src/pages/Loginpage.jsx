@@ -23,7 +23,7 @@ export default function Loginpage() {
         localStorage.setItem('token', res.data.token);
         // console.log(res.data.token)
         setSuccess('Login successful!');
-        navigate("/home")
+        navigate("/")
       } catch (err) {
         setError(err.response?.data?.message || 'Login failed');
       }
@@ -47,8 +47,8 @@ export default function Loginpage() {
     }
 
     return (
-      <section className='min-h-screen flex items-center justify-center bg-slate-900 font-serif'>
-        <div className='p-10 flex flex-col items-center text-center gap-8 bg-white rounded-2xl'>
+      <section className='md:min-h-screen flex items-center justify-center md:justify-start bg-black font-serif'>
+        <div className=' w-screen min-h-screen md:w-[50%] md:h-screen p-10 flex flex-col items-center text-center gap-8 bg-white rounded'>
           <h1 className="font-bold text-5xl">Welcome to HIGH</h1>
           <h2 className='font-extrabold text-blue-500 text-3xl' >{isLogin ? 'Log in' : 'Sign Up'}</h2>
   

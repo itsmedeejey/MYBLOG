@@ -15,7 +15,6 @@ const HomePage = () => {
   return (<div className='max-w-screen  overflow-x-hidden'>
     
         <NavBar ></NavBar>
-
    
        <PostList posts={posts}></PostList>
     </div> );

@@ -12,7 +12,7 @@ function App() {
       <Routes>
           <Route path='/signup' element={<Loginpage/>}></Route>
           <Route path='/posts/:id' element={<FullPost/>}></Route>
-          <Route path='/home'element={<Homepage1/>} ></Route>
+          <Route path='/' element={<Homepage1/>} ></Route>
           <Route path='/create'element={<CreatePostPage/>} ></Route>
           <Route path='/yourposts'element={<UsersPost/>} ></Route>
 

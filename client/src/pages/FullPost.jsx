@@ -23,6 +23,7 @@ const FullPost = () => {
       }}>
        </div>
       <p className="text-sm text-gray-500 mt-2 font-light ">
+        
         {new Date(post.createdAt).toLocaleDateString()}
       </p>
     </div>
