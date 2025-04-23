@@ -50,7 +50,7 @@ export default function Loginpage() {
 
     return (
       <section className='md:min-h-screen flex items-center justify-center md:justify-start bg-black font-serif'>
-        <div className=' w-screen min-h-screen md:w-[50%] md:h-screen p-10 flex flex-col items-center text-center gap-8 bg-white rounded'>
+        <div className=' w-screen min-h-screen md:w-[50%] md:h-screen p-10 flex flex-col items-center text-center justify-center gap-8 bg-white '>
           <h1 className="font-bold text-5xl">Welcome to HIGH</h1>
           <h2 className='font-extrabold text-blue-500 text-3xl' >{isLogin ? 'Log in' : 'Sign Up'}</h2>
   
@@ -94,11 +94,16 @@ export default function Loginpage() {
                 setError('');
                 setSuccess('');
               }}
-            >
+            > 
               {isLogin ? 'Signup' : 'Login'}
             </button>
           </p>
         </div>
+
+        <div className='hidden md:block w-[50%] h-screen'>
+  <img src="background.jpg" alt="img" className='h-full w-full object-cover' />
+</div>
+
       </section>
     );
   };
