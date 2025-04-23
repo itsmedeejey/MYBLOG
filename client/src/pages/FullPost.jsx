@@ -2,12 +2,14 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 const FullPost = () => {
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   const { id } = useParams(); // This gets the ID from the URL
   const [post, setPost] = useState(null);
 
   useEffect(() => {
     // Replace this with your actual fetch logic
-    fetch(`http://localhost:3000/user/posts/${id}`)
+    fetch(`${baseURL}/user/posts/${id}`)
       .then(res => res.json())
       .then(data => setPost(data));
   }, [id]);

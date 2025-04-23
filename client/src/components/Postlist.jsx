@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PostList = ({ posts = [] }) => {
+const PostList = ({ posts = [],loading=false   }) => {
+  
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[50vh]">
+        <div className="text-gray-500 text-lg animate-pulse">Loading posts...</div>
+      </div>
+    );
+  }
   if (!Array.isArray(posts)) {
     return <p className="text-center text-gray-500 mt-10">No posts to show.</p>;
   }

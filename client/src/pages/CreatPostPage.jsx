@@ -4,6 +4,8 @@ import Tiptap from "../components/Tiptap";
 import { useNavigate } from "react-router-dom";
 
 const PostPage = () => {
+    const baseURL = import.meta.env.VITE_API_BASE_URL;
+
     const [title, setTitle] = useState("");
     const [content, setContent] = useState(""); // HTML content as string
     const navigate = useNavigate()
@@ -32,7 +34,7 @@ const PostPage = () => {
                 return;  
                 
             }  
-            const response = await fetch("http://localhost:3000/user/posts", {
+            const response = await fetch(`${baseURL}/user/posts`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -5,6 +5,7 @@ import { useEffect,useState } from "react"
 import { jwtDecode } from "jwt-decode";
 const usersPost = () =>{
 
+    const baseURL = import.meta.env.VITE_API_BASE_URL;
 
         const token = localStorage.getItem("token");
         const user = jwtDecode(token)
@@ -17,7 +18,7 @@ const usersPost = () =>{
                       return;
                     }
                 
-              const res =  await axios.get('http://localhost:3000/user/userposts',{
+              const res =  await axios.get(`${baseURL}/user/userposts`,{
                   headers: {
                       Authorization: `bearer ${token}`
                   }
@@ -44,6 +45,7 @@ const usersPost = () =>{
         </div>
         
         <PostList posts={posts}></PostList>
+
 
 
 

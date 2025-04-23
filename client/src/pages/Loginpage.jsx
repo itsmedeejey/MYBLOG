@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function Loginpage() {
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   const [isLogin, setIsLogin] = useState(true);
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
@@ -15,7 +17,7 @@ export default function Loginpage() {
       setError('');
       setSuccess('');
       try {
-        const res = await axios.post('http://localhost:3000/user/signin', {
+        const res = await axios.post(`${baseURL}/user/signin`, {
           email,
           password
         });
@@ -25,7 +27,7 @@ export default function Loginpage() {
         setSuccess('Login successful!');
         navigate("/")
       } catch (err) {
-        setError(err.response?.data?.message || 'Login failed');
+        setError(err.response?.data?.message || 'Login failed',err);
       }
     };
 
@@ -34,7 +36,7 @@ export default function Loginpage() {
       setError('');
       setSuccess('');
       try{
-        const res = await axios.post("http://localhost:3000/user/signup",
+        const res = await axios.post(`${baseURL}/user/signup`,
         {  email,password}); 
      
      setSuccess('Signup successful! Please log in.');
